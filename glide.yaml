@@ -1,0 +1,7 @@
+package: github.com/hamster21/minion
+license: MIT
+owners:
+- name: Hans Meyer
+  email: hamster.of.dev@gmail.com
+
+import: []
