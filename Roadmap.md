@@ -10,7 +10,7 @@ Version 0.1:
 Version 0.2:
 - [ ] Structure tasks into projects
 - [ ] Organization of project folders and project DOMs
-- [ ] Feature toggles (e.g. for later adding audit, labels, users, habits, ...)
+- [ ] Feature toggles (e.g. for later adding audit, labels, users, habits, aims ...)
 
 Version 0.3:
 - [ ] Integration in VCS (see also [git-appraise](https://github.com/google/git-appraise)) for distributed issue tracking

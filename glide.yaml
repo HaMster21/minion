@@ -3,5 +3,5 @@ license: MIT
 owners:
 - name: Hans Meyer
   email: hamster.of.dev@gmail.com
-
-import: []
+import:
+- package: github.com/stretchr/objx

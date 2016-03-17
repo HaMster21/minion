@@ -1,0 +1,6 @@
+hash: 8a7a067fa83e825240b0efc90cde426f08e710d5df539ea04360de48b23106ac
+updated: 2016-03-16T08:02:27.238451385Z
+imports:
+- name: github.com/stretchr/objx
+  version: 1a9d0bb9f541897e62256577b352fdbc1fb4fd94
+devImports: []
