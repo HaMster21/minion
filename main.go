@@ -21,5 +21,6 @@ func main() {
 		panic(err)
 	}
 
-	fmt.Printf("Resulting task object:\n%v\n", task)
+	fmt.Printf("Resulting task object:\n%s\n\n", task)
+	fmt.Printf("All data:\n%#v\n", task)
 }
