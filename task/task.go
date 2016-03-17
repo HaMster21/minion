@@ -1,6 +1,7 @@
 package task
 
 import (
+	"fmt"
 	dom "github.com/stretchr/objx"
 )
 
@@ -10,6 +11,14 @@ type Task struct {
 
 func FromJSON(json string) (*Task, error) {
 	model, err := dom.FromJSON(json)
+	if err != nil {
+		return nil, err
+	}
+
+	if model.Get("description").IsNil() {
+		return nil, fmt.Errorf("A task must have a description. %v has no toplevel \"description\" key", model)
+	}
+
 	return &Task{model}, err
 }
 

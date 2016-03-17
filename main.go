@@ -22,5 +22,4 @@ func main() {
 	}
 
 	fmt.Printf("Resulting task object:\n%v\n", task)
-	fmt.Println("Hello world, this is a work in progress :)")
 }
