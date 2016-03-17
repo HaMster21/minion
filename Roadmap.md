@@ -1,7 +1,7 @@
 Version 0.1:
 - [x] Task object definition and DOM model
 - [x] Creating tasks from JSON
-- [ ] CRUD operations on tasks
+- [x] CRUD operations on tasks
 - [x] commandline operations to work with stdin/stdout
 - [ ] Continuous integration/delivery
 - [ ] Docs draft
