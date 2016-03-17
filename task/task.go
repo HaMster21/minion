@@ -16,6 +16,10 @@ type Task struct {
 	model dom.Map
 }
 
+func New() *Task {
+	return &Task{dom.MSI("description", "##Edit me!##")}
+}
+
 func FromJSON(json string) (*Task, error) {
 	model, err := dom.FromJSON(json)
 	if err != nil {
