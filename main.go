@@ -23,7 +23,13 @@ import (
 	"os"
 )
 
+const (
+	gitRevision = ""
+	version     = "0.1.0-dev"
+)
+
 func main() {
+	fmt.Println(licenseHint())
 	data, err := ioutil.ReadAll(os.Stdin)
 	if err != nil {
 		panic(err)
@@ -39,4 +45,14 @@ func main() {
 
 	fmt.Printf("Resulting task object:\n%s\n\n", task)
 	fmt.Printf("All data:\n%#v\n", task)
+}
+
+func licenseHint() string {
+	return fmt.Sprintf(
+`Minion task manager; Version %s
+Copyright (C) 2016 Hans Meyer
+This program comes with ABSOLUTELY NO WARRANTY and is free software.
+You are welcome to redistribute it under certain conditions.
+See https://github.com/HaMster21/minion/blob/%s/LICENSE for details`,
+		version, gitRevision)
 }
