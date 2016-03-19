@@ -21,13 +21,13 @@ package task
 import (
 	"bytes"
 	"fmt"
-	"text/template"
 	dom "github.com/stretchr/objx"
+	"text/template"
 )
 
 var (
 	taskBlueprint = `{{ .description }}`
-	taskPrinter = template.Must(template.New("Task").Parse(taskBlueprint))
+	taskPrinter   = template.Must(template.New("Task").Parse(taskBlueprint))
 )
 
 /*
@@ -102,7 +102,7 @@ func (t *Task) GoString() string {
 func (t *Task) displayWithTemplate() string {
 	var result bytes.Buffer
 	if err := taskPrinter.Execute(&result, t.model); err != nil {
-		panic (err)
+		panic(err)
 	}
 
 	return result.String()

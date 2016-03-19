@@ -49,7 +49,7 @@ func main() {
 
 func licenseHint() string {
 	return fmt.Sprintf(
-`Minion task manager; Version %s
+		`Minion task manager; Version %s
 Copyright (C) 2016 Hans Meyer
 This program comes with ABSOLUTELY NO WARRANTY and is free software.
 You are welcome to redistribute it under certain conditions.
