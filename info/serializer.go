@@ -1,7 +1,7 @@
-package item
+package info
 
-type Serializer interface {
-	Save() error
-	Load() error
+type Storage interface {
+	Save(Container) error
+	Load() (Container,error)
 }
 
