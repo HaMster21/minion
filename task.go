@@ -1,22 +1,20 @@
 package minion
 
 import (
-	"bytes"
-	"text/template"
+	"github.com/hamster21/minion/info"
 )
 
 var (
-	currentPattern = "{{.description}}"
-	currentTemplate *template.Template = nil
+	printer *info.Printer
 )
 
 func init() {
-	// get user-defined pattern from the config
-	tpl, err := template.New("task").Parse(currentPattern)
+	// get task printing pattern from config
+	p, err := info.NewPrinter("{{ .description }}")
 	if err != nil {
 		panic (err)
 	}
-	currentTemplate = tpl
+	printer = p
 }
 
 type Task map[string]interface{}
@@ -36,32 +34,6 @@ func (t *Task) Set(at string, to interface{}) error {
 	return nil
 }
 
-func (t *Task) TplString(templ string) string {
-	var tpl *template.Template
-	var err error
-	var buf bytes.Buffer
-
-	tpl, err = template.New("task").Parse(templ + " {{ .description }}")
-	if err != nil {
-		tpl, err = template.New("task").Parse(currentPattern)
-		if err != nil {
-			panic (err)
-		}
-	}
-
-	err = tpl.Execute(&buf, map[string]interface{}(*t))
-	if err != nil {
-		panic(err)
-	}
-	return buf.String()
-}
-
 func (t *Task) String() string {
-	var buf bytes.Buffer
-
-	if err := currentTemplate.Execute(&buf, map[string]interface{}(*t)); err != nil {
-		panic (err)
-	}
-
-	return buf.String()
+	return printer.Print(map[string]interface{}(*t))
 }

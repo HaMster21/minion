@@ -1,12 +1,8 @@
 package info
 
-import "encoding"
-
 type Container interface {
 	Get(domPath string) interface{}
-	Set(domPath string, value interface{} error
-	TplString(template string) string
+	Set(domPath string, value interface{}) error
 
-	encoding.BinaryMarshaler
-	encoding.BinaryUnmarshaler
+	Raw() map[string]interface{}
 }
