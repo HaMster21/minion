@@ -20,8 +20,6 @@ import (
 	"fmt"
 	"io/ioutil"
 	"os"
-
-	"github.com/hamster21/minion/item"
 )
 
 const (
