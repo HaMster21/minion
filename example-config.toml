@@ -5,3 +5,7 @@ path="."
 [[Projects]]
 name="Housework"
 path="~/Tasks/Housework"
+
+[[Projects]]
+name = "Software"
+path = "../get-This-One"

@@ -19,6 +19,7 @@ package config
 import (
 	"os"
 	"fmt"
+	"strings"
 	"io/ioutil"
 	"github.com/naoina/toml"
 )
@@ -42,5 +43,26 @@ func FromData(data []byte) (*Config, error) {
 	if err := toml.Unmarshal(data, &conf); err != nil {
 		return nil, fmt.Errorf("Unable to parse the config: %s", err)
 	}
+	if err := sanityCheck(&conf); err != nil {
+		return nil, fmt.Errorf("Your config file has issues:\n%s", err)
+	}
 	return &conf, nil
+}
+
+func sanityCheck(conf *Config) error {
+	var problems []string
+	for _, prj := range conf.Projects {
+		fi, err := os.Stat(prj.Path)
+		if err != nil {
+			problems = append(problems, err.Error())
+		} else if !fi.IsDir() {
+			problems = append(problems, fmt.Sprintf("%s is not a directory", prj.Path))
+		}
+	}
+
+	if len(problems) == 0 {
+		return nil
+	}
+
+	return fmt.Errorf("%s", strings.Join(problems, "\n"))
 }
