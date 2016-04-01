@@ -17,8 +17,8 @@
 package main
 
 import (
-	"github.com/hamster21/minion/config"
 	"fmt"
+	"github.com/hamster21/minion/config"
 )
 
 const (

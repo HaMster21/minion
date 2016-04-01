@@ -17,11 +17,11 @@
 package config
 
 import (
-	"os"
 	"fmt"
-	"strings"
-	"io/ioutil"
 	"github.com/naoina/toml"
+	"io/ioutil"
+	"os"
+	"strings"
 )
 
 func FromFile(path string) (*Config, error) {

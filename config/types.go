@@ -24,3 +24,7 @@ type Project struct {
 	Name string
 	Path string
 }
+
+func (p *Project) Name() {
+	return p.Name
+}
