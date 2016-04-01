@@ -14,36 +14,33 @@
 // You should have received a copy of the GNU General Public License
 // along with this program. If not, see <http://www.gnu.org/licenses/>.
 
-package main
+package config
 
 import (
+	"os"
 	"fmt"
 	"io/ioutil"
-	"os"
+	"github.com/naoina/toml"
 )
 
-const (
-	gitRevision = ""
-	version     = "0.1.0-dev"
-)
-
-func main() {
-	fmt.Println(licenseHint())
-	data, err := ioutil.ReadAll(os.Stdin)
+func FromFile(path string) (*Config, error) {
+	configFile, err := os.Open(path)
 	if err != nil {
-		panic(err)
+		return nil, fmt.Errorf("Unable to load config: %s", err)
 	}
+	defer configFile.Close()
 
-	stdin := fmt.Sprintf("%s", data)
-	fmt.Printf("Data from stdin: %s\n", stdin)
+	buf, err := ioutil.ReadAll(configFile)
+	if err != nil {
+		return nil, fmt.Errorf("Unable to read config file: %s", err)
+	}
+	return FromData(buf)
 }
 
-func licenseHint() string {
-	return fmt.Sprintf(
-		`Minion task manager; Version %s
-Copyright (C) 2016 Hans Meyer
-This program comes with ABSOLUTELY NO WARRANTY and is free software.
-You are welcome to redistribute it under certain conditions.
-See https://github.com/HaMster21/minion/blob/%s/LICENSE for details`,
-		version, gitRevision)
+func FromData(data []byte) (*Config, error) {
+	var conf Config
+	if err := toml.Unmarshal(data, &conf); err != nil {
+		return nil, fmt.Errorf("Unable to parse the config: %s", err)
+	}
+	return &conf, nil
 }

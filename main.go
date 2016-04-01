@@ -14,42 +14,39 @@
 // You should have received a copy of the GNU General Public License
 // along with this program. If not, see <http://www.gnu.org/licenses/>.
 
-package minion
+package main
 
 import (
-	"github.com/hamster21/minion/info"
+	"github.com/hamster21/minion/config"
+	"fmt"
 )
 
-var (
-	printer *info.Printer
+const (
+	gitRevision = ""
+	version     = "0.1.0-dev"
 )
 
-func init() {
-	// get task printing pattern from config
-	p, err := info.NewPrinter("{{ .description }}")
+func main() {
+	fmt.Println(licenseHint())
+
+	conf, err := config.FromFile("example-config.toml")
 	if err != nil {
-		panic (err)
+		panic(err)
 	}
-	printer = p
+	fmt.Printf("Complete config: %v\n", conf)
+	fmt.Println("Projects:")
+	for _, prj := range conf.Projects {
+		fmt.Println(prj.Name, "@", prj.Path)
+	}
 }
 
-type Task map[string]interface{}
-
-func NewTask(description string) Task {
-	t := make(map[string]interface{})
-	t["description"] = description
-	return t
-}
-
-func (t *Task) Get(at string) interface{} {
-	return map[string]interface{}(*t)[at]
-}
-
-func (t *Task) Set(at string, to interface{}) error {
-	map[string]interface{}(*t)[at] = to
-	return nil
-}
-
-func (t *Task) String() string {
-	return printer.Print(map[string]interface{}(*t))
+func licenseHint() string {
+	return fmt.Sprintf(
+		`Minion task manager; Version %s
+Copyright (C) 2016 Hans Meyer
+This program comes with ABSOLUTELY NO WARRANTY and is free software.
+You are welcome to redistribute it under certain conditions.
+See https://github.com/HaMster21/minion/blob/%s/LICENSE for details
+`,
+		version, gitRevision)
 }

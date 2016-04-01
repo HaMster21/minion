@@ -14,15 +14,13 @@
 // You should have received a copy of the GNU General Public License
 // along with this program. If not, see <http://www.gnu.org/licenses/>.
 
-package minion
+package config
 
-import "testing"
+type Config struct {
+	Projects []Project
+}
 
-func TestTaskCreation(t *testing.T) {
-	task := NewTask("Get stuff done")
-
-	desc := task.Get("description")
-	if desc.(string) != "Get stuff done" {
-		t.Errorf("Task created with description %s contained the modified description %s right after creation", task, desc)
-	}
+type Project struct {
+	Name string
+	Path string
 }
