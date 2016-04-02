@@ -1,11 +1,3 @@
 [[Projects]]
-name="none"
-path="."
-
-[[Projects]]
-name="Housework"
-path="~/Tasks/Housework"
-
-[[Projects]]
-name = "Software"
-path = "../get-This-One"
+name="home"
+path="/home/hamster"

@@ -54,7 +54,7 @@ func sanityCheck(conf *Config) error {
 	for _, prj := range conf.Projects {
 		fi, err := os.Stat(prj.Path)
 		if err != nil {
-			problems = append(problems, err.Error())
+			problems = append(problems, fmt.Sprintf("Error in configuration for project %s: %s", prj.Name, err.Error()))
 		} else if !fi.IsDir() {
 			problems = append(problems, fmt.Sprintf("%s is not a directory", prj.Path))
 		}

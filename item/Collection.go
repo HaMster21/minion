@@ -14,14 +14,12 @@
 // You should have received a copy of the GNU General Public License
 // along with this program. If not, see <http://www.gnu.org/licenses/>.
 
-package config
+package item
 
-type Config struct {
-	Projects []Project
+import "sort"
+
+type Collection interface {
+	sort.Interface
+	Name() string
+	Items() []Item
 }
-
-type Project struct {
-	Name string
-	Path string
-}
-
