@@ -22,3 +22,6 @@ func main() {
 	fmt.Println("Hello world")
 }
 
+func myfunc() string {
+	return "a string"
+}
