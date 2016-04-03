@@ -16,37 +16,7 @@
 
 package main
 
-import (
-	"fmt"
-	"github.com/hamster21/minion/config"
-)
-
-const (
-	gitRevision = ""
-	version     = "0.1.0-dev"
-)
-
 func main() {
-	fmt.Println(licenseHint())
-
-	conf, err := config.FromFile("example-config.toml")
-	if err != nil {
-		panic(err)
-	}
-	fmt.Printf("Complete config: %v\n", conf)
-	fmt.Println("Projects:")
-	for _, prj := range conf.Projects {
-		fmt.Println(prj.Name, "@", prj.Path)
-	}
+	fmt.Println("Hello world")
 }
 
-func licenseHint() string {
-	return fmt.Sprintf(
-		`Minion task manager; Version %s
-Copyright (C) 2016 Hans Meyer
-This program comes with ABSOLUTELY NO WARRANTY and is free software.
-You are welcome to redistribute it under certain conditions.
-See https://github.com/HaMster21/minion/blob/%s/LICENSE for details
-`,
-		version, gitRevision)
-}
