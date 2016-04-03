@@ -2,7 +2,11 @@
 
 :wrench: Work in progress task management
 
-[![wercker status](https://app.wercker.com/status/aeebd6b26c9708c4ecc1050177a014aa/s "wercker status")](https://app.wercker.com/project/bykey/aeebd6b26c9708c4ecc1050177a014aa) [![GoDoc](https://godoc.org/github.com/HaMster21/minion?status.svg)](https://godoc.org/github.com/HaMster21/minion) [![Go Report Card](https://goreportcard.com/badge/github.com/hamster21/minion)](https://goreportcard.com/report/github.com/hamster21/minion)
+[![wercker status](https://app.wercker.com/status/aeebd6b26c9708c4ecc1050177a014aa/s "wercker status")](https://app.wercker.com/project/bykey/aeebd6b26c9708c4ecc1050177a014aa)
+[![GoDoc](https://godoc.org/github.com/HaMster21/minion?status.svg)](https://godoc.org/github.com/HaMster21/minion)
+[![Go Report Card](https://goreportcard.com/badge/github.com/hamster21/minion)](https://goreportcard.com/report/github.com/hamster21/minion)
+[![codebeat badge](https://codebeat.co/badges/5f1222b7-c537-4ed9-89e7-85b09eaab33d)](https://codebeat.co/projects/github-com-hamster21-minion)
+[![codecov.io](https://codecov.io/github/HaMster21/minion/coverage.svg?branch=master)](https://codecov.io/github/HaMster21/minion?branch=master)
 
 Poor mans attempt to build something like Taskwarrior, but less restrictive and with Windows support
 
