@@ -1,3 +1,1 @@
-[[Projects]]
-name="home"
-path="/home/hamster"
+TaskRoot = "/home/hamster/Tasks"

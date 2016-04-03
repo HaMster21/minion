@@ -17,6 +17,7 @@
 package config
 
 type Config struct {
+	TaskRoot string
 	Projects []Project
 }
 
