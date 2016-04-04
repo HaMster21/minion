@@ -20,9 +20,9 @@ import "time"
 
 type task struct {
 	Summary string
-	Detail string
+	Detail  string
 
-	ParentCollection *Collection
+	ParentCollection     *Collection
 	PositionInCollection uint
 
 	Created time.Time
@@ -32,11 +32,11 @@ type task struct {
 }
 
 func NewTask(summary, detail string, parent *Collection) *task {
-	return &task {
+	return &task{
 		Summary: summary,
-		Detail: detail,
+		Detail:  detail,
 
-		ParentCollection: parent,
+		ParentCollection:     parent,
 		PositionInCollection: parent.Last(),
 
 		Created: time.Now(),
@@ -44,6 +44,10 @@ func NewTask(summary, detail string, parent *Collection) *task {
 
 		AdditionData: make(map[string]interface{}),
 	}
+}
+
+func NewTaskFromData(data map[string]interface{}) (*task, error) {
+	return nil, nil
 }
 
 func (t *task) Heading() string {
@@ -61,7 +65,6 @@ func (t *task) CreatedAt() time.Time {
 func (t *task) UpdatedAt() time.Time {
 	return t.Updated
 }
-
 
 type Collection struct {
 	lastItem uint

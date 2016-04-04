@@ -21,7 +21,7 @@ import "time"
 type Interface interface {
 	Heading() string
 	Description() string
-	
+
 	Parent() *Collection
 	Position() uint
 
