@@ -8,6 +8,7 @@ build:
     - script:
         name: go get
         code: |
+          go get github.com/onsi/ginkgo
           go get
 
     # Build the project
@@ -18,12 +19,13 @@ build:
 
     # Test the project
     - script:
-        name: go test
+        name: run tests
         code: |
-          go test -covermode=count -coverprofile=coverage.txt ./...
+          ginkgo -r -cover -p -race -trace
 
   after-steps:
     - script:
       name: push coverage
       code: |
+          cat **/*.coverprofile >> coverage.txt
           if [ -f coverage.txt ]; then bash <(curl -s https://codecov.io/bash) -t $CodeCovToken; fi
