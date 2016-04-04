@@ -2,13 +2,15 @@ box: golang
 
 build:
   steps:
-    - setup-go-workspace
+    - setup-go-workspace:
+      package-dir: github.com/hamster21/minion
 
     # Gets the dependencies
     - script:
         name: go get
         code: |
-          go get github.com/onsi/ginkgo
+          go get github.com/onsi/ginkgo/ginkgo
+          go get github.com/onsi/gomega
           go get
 
     # Build the project
@@ -21,7 +23,7 @@ build:
     - script:
         name: run tests
         code: |
-          ginkgo -r -cover -p -race -trace
+          $GOPATH/bin/ginkgo -r -cover -p -race -trace
 
   after-steps:
     - script:
