@@ -16,9 +16,16 @@
 
 package main
 
-import "fmt"
+import (
+	"github.com/julienschmidt/httprouter"
+	"log"
+	"net/http"
+)
 
 func main() {
-	fmt.Println("Hello world")
+	router := httprouter.New()
+	SetupRoutes(router)
+
+	log.Fatal(http.ListenAndServe(":5000", router))
 }
 
