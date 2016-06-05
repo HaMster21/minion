@@ -1,0 +1,13 @@
+version: '2'
+
+services:
+    app:
+        build: .
+        image: golang:onbuild
+        links:
+            - neo4j
+        ports:
+            - "5000:5000"
+
+    neo4j:
+        image: neo4j:3.0.1
