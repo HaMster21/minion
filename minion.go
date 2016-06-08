@@ -26,7 +26,6 @@ func main() {
 	router := httprouter.New()
 	SetupRoutes(router)
 
-	log.Print("Starting API server");
+	log.Print("Starting API server")
 	log.Fatal(http.ListenAndServe(":5000", router))
 }
-
